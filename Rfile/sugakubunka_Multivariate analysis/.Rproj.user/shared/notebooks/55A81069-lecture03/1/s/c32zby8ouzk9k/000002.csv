@@ -1,0 +1,5 @@
+"0","```r
+# mtcarsデータセットの確認
+dat <- mtcars[, c(\"hp\", \"mpg\")]
+head(x = dat, n = 5)
+```"

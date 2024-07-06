@@ -1,0 +1,7 @@
+{
+    "initial_working_directory": "~",
+    "editor_theme": "Twilight",
+    "server_editor_font_enabled": true,
+    "server_editor_font": "Menlo",
+    "posix_terminal_shell": "bash"
+}

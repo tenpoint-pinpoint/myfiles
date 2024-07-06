@@ -1,0 +1,13 @@
+{
+    "path" : "~/sugakubunka_lesson/lecture09",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        },
+        {
+            "ascending" : true,
+            "columnIndex" : 1
+        }
+    ]
+}

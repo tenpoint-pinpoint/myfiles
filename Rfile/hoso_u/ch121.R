@@ -1,0 +1,10 @@
+library(arules)
+data(Groceries)
+g0 <- Groceries
+gfrm0 <- as(g0,"data.frame")
+write.csv(gfrm0,"Groceries.csv")
+gdat1 <- itemFrequency(g0)
+grule2 <- apriori(g0,parameter=list(confidence=0.5,support=0.01)) 
+grule3 <- sort(grule2,d=T,by="confidence")
+grule4 <- head(grule3)
+inspect(grule3)

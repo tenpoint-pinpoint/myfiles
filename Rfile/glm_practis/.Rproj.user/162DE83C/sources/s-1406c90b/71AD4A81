@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1617720204249.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "71AD4A81",
+    "lastKnownWriteTime" : 1617721464,
+    "last_content_update" : 1617802366328,
+    "path" : "~/glm_practis/glm_chapter2_4_2.R",
+    "project_path" : "glm_chapter2_4_2.R",
+    "properties" : {
+        "cursorPosition" : "61,0",
+        "scrollLine" : "35",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

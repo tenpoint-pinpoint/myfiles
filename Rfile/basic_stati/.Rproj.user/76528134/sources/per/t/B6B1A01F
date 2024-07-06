@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1596728519627.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2706491853",
+    "id" : "B6B1A01F",
+    "lastKnownWriteTime" : 1595775179,
+    "last_content_update" : 1595775179,
+    "path" : "~/Documents/R関連/basic_stati/hypothesis_verrification.R",
+    "project_path" : "hypothesis_verrification.R",
+    "properties" : {
+        "cursorPosition" : "87,12",
+        "docOutlineVisible" : "0",
+        "scrollLine" : "82",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,7 @@
+"0","```r
+# 次数10の多項式回帰（10次回帰ともいいます。）
+result_deg10 <- lm(mpg ~ poly(hp_scale, degree = 10, raw = TRUE), 
+                  data = dat)
+plot(dat$hp, dat$mpg)
+lines(sort(dat$hp), predict(result_deg10)[order(dat$hp)]) 
+```"

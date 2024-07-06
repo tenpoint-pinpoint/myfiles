@@ -1,0 +1,5 @@
+yamate0 <- read.csv("ch101.csv",header=T,row.names=1,fileEncoding="UTF8")
+yamate1 <- as.dist(yamate0)
+yamate2 <- cmdscale(yamate1,k=2,eig=T)
+plot(yamate2$points,type="n")
+text(yamate2$points,rownames(yamate2$points))

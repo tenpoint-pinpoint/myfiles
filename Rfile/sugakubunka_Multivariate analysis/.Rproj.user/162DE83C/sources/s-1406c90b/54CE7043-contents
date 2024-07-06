@@ -1,0 +1,53 @@
+## 最尤法
+## 尤度関数 = p^3 * (1-p)^2
+
+# 尤度関数を作る
+lik <- function(p){return(p^3 * (1-p)^2)}
+# 尤度関数を描画する
+curve(lik, from = 0.0, to = 1.0)
+
+#-- ロジスティック回帰 ---------------------------------------------#
+dat <- read.csv("./lecture04/keiyaku.csv", fileEncoding = "cp932")
+
+# データの様子を俯瞰しておく
+head(dat, 5)
+str(dat)
+
+# 訪問時刻と契約結果の関係
+table(dat$訪問時刻, dat$契約結果)
+#---結果--------------------------------------------#
+#       0  1
+# 午後  3  6
+# 午前 11  2
+#---------------------------------------------------#
+
+# 年齢と契約結果の関係
+plot(dat$担当者年齢, dat$契約結果)
+
+# 分析
+result <- glm(契約結果 ~ 訪問時刻 + 担当者年齢, data = dat)
+result
+#---結果--------------------------------------------#
+#Call:  glm(formula = 契約結果 ~ 訪問時刻 + 担当者年齢, data = dat)
+Coefficients:
+  (Intercept)  訪問時刻午前    担当者年齢  
+-0.34239      -0.44835       0.03017  
+
+Degrees of Freedom: 21 Total (i.e. Null);  19 Residual
+Null Deviance:	    5.091 
+Residual Deviance: 2.584 	AIC: 23.32
+#---------------------------------------------------#
+
+
+
+
+
+# ロジスティック関数を作る
+logistic <- function(p){return(1.0/(1.0+exp(-p)))}
+curve(logistic, from = -3.0, to = 3.0)
+
+# 編回帰係数の推定の仕組み
+lik <- function(p){return(p^3 * (1-p)^2)}
+curve(lik, from = 0.0, to = 1.0)
+
+

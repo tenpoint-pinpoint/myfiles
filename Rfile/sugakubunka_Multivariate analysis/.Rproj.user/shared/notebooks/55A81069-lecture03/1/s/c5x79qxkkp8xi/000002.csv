@@ -1,0 +1,26 @@
+"0","```r
+# 多項式回帰
+result_deg2 <- lm(mpg ~ poly(hp_scale, degree = 2, raw = TRUE), 
+                  data = dat)
+summary(result_deg2)
+```"
+"1","
+Call:
+lm(formula = mpg ~ poly(hp_scale, degree = 2, raw = TRUE), data = dat)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.5512 -1.6027 -0.6977  1.5509  8.7213 
+
+Coefficients:
+                                        Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                               30.455      1.309  23.271  < 2e-16 ***
+poly(hp_scale, degree = 2, raw = TRUE)1  -47.981      7.085  -6.772 1.96e-07 ***
+poly(hp_scale, degree = 2, raw = TRUE)2   33.703      7.884   4.275 0.000189 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 3.077 on 29 degrees of freedom
+Multiple R-squared:  0.7561,	Adjusted R-squared:  0.7393 
+F-statistic: 44.95 on 2 and 29 DF,  p-value: 1.301e-09
+"

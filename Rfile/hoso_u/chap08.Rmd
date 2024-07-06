@@ -1,0 +1,34 @@
+---
+title: "主成分分析"
+author: "大月彩"
+date: "2019/9/10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 多次元尺度法
+
+###ヨーロッパの都市について
+
+```{r}
+e1 <- cmdscale(eurodist,eig=T)
+e1
+plot(e1$points,type="n")
+text(e1$points,rownames(e1$points) )
+```
+
+反転した形になっている。
+
+##アメリカの都市について
+
+```{r}
+u1 <- cmdscale(UScitiesD,eig=T)
+u1
+plot(u1$points,type="n")
+text(u1$points,rownames(u1$points) )
+```
+
+反転した形になっている。GOFを見ると、ヨーロッパに比べてアメリカの方が良い

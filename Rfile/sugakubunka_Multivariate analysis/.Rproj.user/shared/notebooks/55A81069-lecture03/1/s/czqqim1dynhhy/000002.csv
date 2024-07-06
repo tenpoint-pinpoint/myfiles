@@ -1,0 +1,12 @@
+"0","```r
+# 偏回帰係数の初期値の決定
+lm(log(mpg) ~ log(hp), data = dat)
+```"
+"1","
+Call:
+lm(formula = log(mpg) ~ log(hp), data = dat)
+
+Coefficients:
+(Intercept)      log(hp)  
+     5.5454      -0.5301  
+"

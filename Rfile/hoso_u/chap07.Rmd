@@ -1,0 +1,27 @@
+---
+title: "回帰分析"
+author: "山城翔太"
+date: "2019/8/23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 回帰分析
+
+R のデータセットにある cars を使って回帰分析を行った。
+
+```{r}
+abcar <- lm(cars$dist~cars$speed)
+summary(abcar)
+```
+
+決定係数は0.65 だった。図は以下のようになった。
+同じスピードでも止まるまでの距離にばらつきがあった。
+
+```{r}
+plot(cars)
+abline(abcar)
+```

@@ -1,0 +1,7 @@
+"0","```r
+# keiyakuデータセットの確認
+dat <- read.csv(\"./data/keiyaku.csv\", 
+                row.names = \"会社\",
+                fileEncoding = \"cp932\")
+head(dat, n = 5)
+```"

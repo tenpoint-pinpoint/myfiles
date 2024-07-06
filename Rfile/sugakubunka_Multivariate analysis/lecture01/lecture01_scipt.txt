@@ -1,0 +1,43 @@
+#################################################
+# 続・初級統計学第1回スクリプト　すうがくぶんか #
+#################################################
+
+
+# データの読み込みと先頭5行の確認
+dat <- read.csv(file = "./data/salary.csv", 
+                fileEncoding = "utf-8")
+head(x = dat, n = 5)
+
+
+# データの標本サイズ・次元・変数の名前の確認
+str(dat)
+
+
+# 社員の `月給` の傾向が `特殊免許の有無` によって異なるかを検討する。
+# 箱ひげ図
+par(family = "ヒラギノ角ゴシック W3")
+boxplot(formula = 月給 ~ 特殊免許の有無, data = dat)
+# 母平均の差の検定
+t.test(formula = 月給 ~ 特殊免許の有無, 
+       data = dat, 
+       alternative = "two.sided",    # 対立仮説
+       conf.level = 0.95)    # 有意水準
+
+
+# 線形性の確認
+# 散布図
+par(family = "ヒラギノ角ゴシック W3")
+plot(x = dat)
+
+
+# 線形回帰の計算
+# 線形回帰はlm関数で計算できます。
+result <- lm(formula = 月給 ~ ., data = dat)
+summary(result)
+
+
+# 偏回帰係数の統計的仮説検定
+# H0 : beta3 = 3000 v.s. H1 : beta3 > 3000
+t_value = (3978-3000)/ 2151
+critical <- qt(p = 0.95, df = 100-(4+1))
+t_value > critical    # TRUEなら帰無仮説を棄却する。 

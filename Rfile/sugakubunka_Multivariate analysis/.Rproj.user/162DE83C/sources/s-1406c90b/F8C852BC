@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1621503016769.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F8C852BC",
+    "lastKnownWriteTime" : 1621503319,
+    "last_content_update" : 1621503325645,
+    "path" : "~/sugakubunka_lesson/lecture06/lecture06.R",
+    "project_path" : "lecture06/lecture06.R",
+    "properties" : {
+        "cursorPosition" : "0,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
