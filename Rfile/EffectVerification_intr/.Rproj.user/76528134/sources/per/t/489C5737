@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1611494342012.000,
+    "dirty" : false,
+    "encoding" : "SHIFT-JIS",
+    "folds" : "",
+    "hash" : "3031094673",
+    "id" : "489C5737",
+    "lastKnownWriteTime" : 1611668666,
+    "last_content_update" : 1611668666925,
+    "path" : "~/Documents/Rfile/EffectVerification_intr/chapter.4.R",
+    "project_path" : "chapter.4.R",
+    "properties" : {
+        "cursorPosition" : "55,5",
+        "scrollLine" : "46",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

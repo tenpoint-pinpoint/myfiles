@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1582445521590.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4012007130",
+    "id" : "97E3762C",
+    "lastKnownWriteTime" : 1582554647,
+    "last_content_update" : 1582554647142,
+    "path" : "~/Documents/R_lesson_tidyverse/R_lesson_3rd/prac.dplyr2.R",
+    "project_path" : "R_lesson_3rd/prac.dplyr2.R",
+    "properties" : {
+        "cursorPosition" : "8,92",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

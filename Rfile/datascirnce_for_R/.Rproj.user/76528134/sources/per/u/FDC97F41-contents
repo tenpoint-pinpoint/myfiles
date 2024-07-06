@@ -1,0 +1,255 @@
+library(tidyverse)
+
+グラフ作成テンプレート
+ggplot(data = <data>)+
+  <geom_function>(mapping = aes(<MAPPING>))
+
+mtcars
+
+??mpg
+
+mpg
+
+#散布図
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = hwy, y = cyl))
+
+#散布図をclass属性で色分け（層別）
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, color = class))
+
+#散布図をclass属性を点の大きさで分ける（層別）
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, size = class))
+#順序のない変数を順序のあるエステティック属性（size）にしたため、警告が出る
+
+#散布図をclass属性で透過度分け（層別）
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
+
+#散布図をclass属性で形分け（層別）
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, shape = class))
+#shapeは６つしかないため、suvグループはプロットされていない
+
+#プロット点を全て青色にする
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+
+#カテゴリ変数同士をプロット
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = model, y = class))
+
+#１つの変数に複数のエステティック属性を付与
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, size = class, color = class, shape = class))
+
+#strokeが何を表しているか？
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, color = cyl, stroke = cyl))
+#マーカーの線の太さを決めている
+
+#エステティック属性を’color = displ < 5’のように変数名以外にするとどうなるか？
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, color = displ < 5))
+#論理判定がなされ、true-falseで実行される
+
+#ファセット
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy))+
+  facet_wrap(~ class, nrow = 2)
+
+#２変数を組み合わせたファセット
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy))+
+  facet_wrap(drv ~ cyl)
+
+#１行だけのファセットを作るとき
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy))+
+  facet_grid(.~ class)
+
+#１列だけのファセットを作るとき
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy))+
+  facet_grid(class ~ .)
+
+#連続変数でファセットするとどうなるか
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy))+
+  facet_wrap(cty ~ cyl)
+#場合わけが増えすぎて、解釈しにくくなる
+
+
+?facet_wrap
+
+#同じデータ、同じエステティックから違うプロットを作成
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy))
+
+ggplot(data = mpg)+
+  geom_smooth(mapping = aes(x = displ, y = hwy))
+#geom_smoothはプロットしたデータに適合する滑らかな曲線を描く
+
+#曲線を層別して描くことも可能
+ggplot(data = mpg)+
+  geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))
+
+#散布図と曲線を同じ場所にプロット
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, color = drv))+
+  geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv, color = drv))
+
+#コードに重複があり冗長である、これを回避
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy))+
+  geom_point()+
+  geom_smooth()
+
+#特定のレイヤーにだけ特別な指示をしたい
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy))+
+  geom_point(mapping = aes(color = class))+
+  geom_smooth()
+
+#滑らかな曲線を変数の特定グループだけ表示
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy))+
+  geom_point(mapping = aes(color = class))+
+  geom_smooth(data = filter(mpg, class == "subcompact"), se = FALSE)
+
+#show.legendの役割は？
+ggplot(data = mpg)+
+  geom_smooth(mapping = aes(x = displ, y = hwy, color = drv))
+
+ggplot(data = mpg)+
+  geom_smooth(mapping = aes(x = displ, y = hwy, color = drv),show.legend = FALSE)
+#凡例を消している
+
+#'se = FALSE'は何をしているか？ 
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy))+
+  geom_point(mapping = aes(color = class))+
+  geom_smooth(data = filter(mpg, class == "subcompact"))
+#標準誤差幅を表示しないようにしている
+
+
+
+
+#<統計変換>#
+ggplot(data = diamonds) +
+  geom_bar(mapping = aes(x = cut))
+#棒グラフやヒストグラムにすると、区分分けして個数を表示する（count）
+#statという統計変換アルゴリズムをgeom_barが持っている
+
+?geom_bar
+#これでも同じグラフができる
+ggplot(data = diamonds) +
+  stat_count(mapping = aes(x = cut))
+
+#個数ではなく比率をy軸にしたい場ggplot(data = diamonds) +
+ggplot(data = diamonds) +
+  geom_bar(mapping = aes(x = cut, y = ..prop.., group = 1))
+
+#統計要約量に注目させる
+ggplot(data = diamonds) +
+  stat_summary(mapping = aes(x = cut, y = depth),
+               fun.ymin = min,
+               fun.ymax = max,
+               fun.y = median)
+
+#上と同じことをgeom_を使って実行するとこうなる
+data = diamonds %>%
+  group_by(cut) %>%
+  summarise(min = min(depth), max = max(depth),
+            median = median(depth))
+ggplot(data) +
+  geom_pointrange(
+    mapping = aes(x = cut, y = median, ymin = min, ymax = max))
+
+#stat_smoothについて
+?stat_smooth
+
+ggplot(data = diamonds, mapping = aes(x = price, y = carat)) +
+  geom_point()+
+  stat_smooth()
+
+
+
+#<位置調整>#
+#棒グラフの枠線の色変え
+ggplot(data = diamonds)+
+  geom_bar(mapping = aes(x = cut, color = cut))
+
+#棒グラフの塗り潰しの色変え
+ggplot(data = diamonds)+
+  geom_bar(mapping = aes(x = cut, fill = cut))
+
+#fillの変数を変えてみると？
+ggplot(data = diamonds)+
+  geom_bar(mapping = aes(x = cut, fill = clarity))
+
+#デフォルトのposition引数”stack”によって指定される位置調整で自動的に積み上げが行われている
+#position = "identity"を指定すると各オブジェクトがグラフのコンテキストの中でしかるべき位置におかれる
+
+#透過して積み上げる
+ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity))+
+  geom_bar(alpha = 1/5, position = "identity")
+
+#塗り潰しなし
+ggplot(data = diamonds, mapping = aes(x = cut, color = clarity))+
+  geom_bar(fill = NA, position = "identity")
+
+#position = "fill"にすると、積み上げの高さが同じになり比較しにくい
+ggplot(data = diamonds)+
+  geom_bar(mapping = aes(x = cut, fill = clarity),position = "fill")
+
+#position = "dudge"にすると、重なるオブジェクトを隣り合わせに置く
+ggplot(data = diamonds)+
+  geom_bar(mapping = aes(x = cut, fill = clarity),position = "dodge")
+
+#散布図では、重なるプロットを少しずらして表示できる
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy))
+
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy),position = "jitter")
+#jitterは各点の位置にランダムノイズを発生させる。２点が同じ乱数を受けることはまずないのでずれて表示される
+#乱数を受けているのは、geom_point引数の’width’と’height’である)
+
+ggplot(data = mpg)+
+  geom_boxplot(mapping = aes(x = class, y = displ))
+
+
+
+#＜座標系＞#
+#x軸とy軸を交換する
+ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
+  geom_boxplot()+
+  coord_flip()
+
+install.packages("maps")
+
+library(maps)
+
+#地図情報について縦横比を正しく設定する
+nz <- map_data("nz")
+ggplot(nz, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", color = "black")+
+  coord_quickmap()
+
+#棒グラフを鶏頭図にするには極座標を使う
+bar <- ggplot(data = diamonds)+
+  geom_bar(mapping = aes(x = cut, fill = cut),show.legend = FALSE, width = 1)+
+  theme(aspect.ratio = 1)+
+  labs(x = NULL, y = NULL)
+
+bar + coord_flip()
+bar + coord_polar()
+
+?geom_abline
+?coord_fixed
+
+#演習
+ggplot(data = mpg, mapping = aes(x = cty, y = hwy))+
+  geom_point()+   #散布図をプロット
+  geom_abline()+  #回帰線をプロット（切片の指定もできる,デフォルトは原点を通る）
+  coord_fixed()   #x軸とy軸の間隔を同じにする
+
+?geom_abline

@@ -1,0 +1,11 @@
+"0","```r
+# 多項式回帰の次数の決定
+aic <- c()
+for (d in 1:10) {    # 次数1から10までの多項式回帰を逐次計算する。
+  result_poly <- lm(mpg ~ poly(hp_scale, degree = d, raw = TRUE), 
+                    data = dat)
+  aic[d] <- AIC(result_poly)
+}
+
+plot(1:10, aic, xlab = \"degree\", ylab = \"AIC\")
+```"

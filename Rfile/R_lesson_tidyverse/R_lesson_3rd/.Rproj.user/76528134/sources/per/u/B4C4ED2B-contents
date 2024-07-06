@@ -1,0 +1,5 @@
+iris %>% group_by(Species) %>% summarise(MIN=min(Sepal.Length),
+                                         MEAN=mean(Sepal.Length),
+                                         MEDIAN=median(Sepal.Length),
+                                         MAX=max(Sepal.Length)
+)

@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1617720192443.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "B195462E",
+    "lastKnownWriteTime" : 1617801473,
+    "last_content_update" : 1617801473396,
+    "path" : "~/glm_practis/glm_capter02.R",
+    "project_path" : "glm_capter02.R",
+    "properties" : {
+        "cursorPosition" : "8,18",
+        "scrollLine" : "0",
+        "source_window_id" : "",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

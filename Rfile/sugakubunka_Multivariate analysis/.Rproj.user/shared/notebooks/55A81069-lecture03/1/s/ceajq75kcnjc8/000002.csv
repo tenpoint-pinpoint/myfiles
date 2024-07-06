@@ -1,0 +1,23 @@
+"0","```r
+# 多項式回帰
+result_power <- nls(mpg ~ a*hp^b, 
+                    data = dat, 
+                    start = list(a = exp(5.5454), b = -0.5301), 
+                    control = nls.control(maxiter = 100))
+summary(result_power)
+```"
+"1","
+Formula: mpg ~ a * hp^b
+
+Parameters:
+   Estimate Std. Error t value Pr(>|t|)    
+a 272.11754   74.03692   3.675 0.000924 ***
+b  -0.54043    0.05826  -9.277 2.55e-10 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 3.102 on 30 degrees of freedom
+
+Number of iterations to convergence: 2 
+Achieved convergence tolerance: 3.411e-06
+"

@@ -1,0 +1,25 @@
+{
+    "id": "F98A5363",
+    "path": "~/EffectVerification_intr/chapter3-2.R",
+    "project_path": "chapter3-2.R",
+    "type": "r_source",
+    "hash": "4223211747",
+    "contents": "",
+    "dirty": false,
+    "created": 1610353746375.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "tempName": "Untitled1",
+        "cursorPosition": "44,19",
+        "scrollLine": "21"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1610374977,
+    "encoding": "SHIFT-JIS",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1610374977483,
+    "read_only": false,
+    "read_only_alternatives": []
+}

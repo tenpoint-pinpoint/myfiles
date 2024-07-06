@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1583490102277.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2368254156",
+    "id" : "C4F0E164",
+    "lastKnownWriteTime" : 1584698357,
+    "last_content_update" : 1584698357,
+    "path" : "~/Documents/R_lesson_tidyverse/r_lesson_4th/prac.ggplot.R",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "261,0",
+        "scrollLine" : "253"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

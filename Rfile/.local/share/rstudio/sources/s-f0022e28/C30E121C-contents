@@ -1,0 +1,33 @@
+library(tidyverse)
+cars
+
+dat <- cars
+
+lm(dat, formula = speed ~ dist)
+
+cor(dat$speed, dat$dist)
+
+dat_limit <- dat %>% 
+  arrange(speed)
+  
+dat_un <- dat_limit[1:30,]
+dat_up <- dat_limit[20:50,]
+
+
+lm(dat, formula = speed ~ dist)
+lm(dat_un, formula = speed ~ dist)
+lm(dat_up, formula = speed ~ dist)
+
+cor(dat$speed, dat$dist)
+cor(dat_un$speed, dat_un$dist)
+cor(dat_up$speed, dat_up$dist)
+
+dat_limit_2 <- dat %>% 
+  arrange(dist)
+
+dat_un_2 <- dat_limit_2[1:30,]
+dat_up_2 <- dat_limit_2[20:50,]
+
+lm(dat, formula = dist ~ speed)
+lm(dat_un_2, formula = dist ~ speed)
+lm(dat_up_2, formula = dist ~ speed)

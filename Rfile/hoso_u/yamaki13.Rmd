@@ -1,0 +1,26 @@
+---
+title: "Yamaki13"
+author: "山城 翔太"
+date: "2019/10/31"
+output: html_document
+---
+
+##  アソシエーション分析
+Epub データを元にルールを抽出した。Epub はダウンロードされた文献データ。
+
+```{r item}
+library(arules)
+data(Epub)
+mean( itemFrequency(Epub))
+rule1 <- apriori(Epub,parameter=list(support=0.00075,confidence=0.85))
+rule2 <- head( sort(rule1,d=T,by="confidence") ) 
+inspect(rule2)
+```
+
+## 考察
+
+support や confidence をどの値にすればよいのかの目安がわかりにくいので工夫が必要。
+パラメータを覚えるのが大変なので、スクリプトをうまく使わないといけない。
+文献の内容がわからないとあまり興味がわかない。
+
+

@@ -1,0 +1,29 @@
+1 + 1
+mean(c(1,1,4,5))
+y <- c(1, 1, 2, 3)
+x <- c(2, 2, 1, 4)
+lm(y ~ x)
+curve(func(x){return(2x+1)})
+curve(func(x) 2x+1)
+?curve
+curve(func(x){2x+1}, from = -1, to =3)
+curve(2x+1, from = -1, to =3)
+curve(2*x+1, from = -1, to =3)
+?vif
+help(vif)
+??vif
+library(car)
+?vif
+install.packages("car")
+?cif
+library(car)
+install.packages("zip")
+library(car)
+?vif
+setwd("/Users/utaka233/desktop/すうがくぶんか/集団授業/続初級統計学_改訂/lecture01/data")
+getwd()
+setwd("/Users/utaka233/desktop/すうがくぶんか/集団授業/続初級統計学_改訂/lecture01/data")
+getwd()
+setwd("/Users/utaka233/desktop/すうがくぶんか/集団授業/続初級統計学_改訂/lecture01/data")
+getwd()
+aa

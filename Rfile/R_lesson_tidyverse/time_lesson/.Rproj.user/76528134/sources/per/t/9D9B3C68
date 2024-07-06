@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1583844764853.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1417442584",
+    "id" : "9D9B3C68",
+    "lastKnownWriteTime" : 1583844754,
+    "last_content_update" : 1583844754,
+    "path" : "~/Documents/R_lesson_tidyverse/time_lesson/ts_lesson.R",
+    "project_path" : "ts_lesson.R",
+    "properties" : {
+        "cursorPosition" : "33,0",
+        "scrollLine" : "11",
+        "source_window_id" : "",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

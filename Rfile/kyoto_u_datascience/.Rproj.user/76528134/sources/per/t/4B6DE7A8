@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1603945774133.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4127924805",
+    "id" : "4B6DE7A8",
+    "lastKnownWriteTime" : 1603945852,
+    "last_content_update" : 1603945852155,
+    "path" : "~/Documents/R関連/kyoto_u_datascience/chapter11.R",
+    "project_path" : "chapter11.R",
+    "properties" : {
+        "cursorPosition" : "210,28",
+        "scrollLine" : "0",
+        "source_window_id" : "",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

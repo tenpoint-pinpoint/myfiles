@@ -1,0 +1,5 @@
+"0","```r
+# 訪問時刻を抜いたモデル
+result2 <- glm(契約結果 ~ 担当者年齢, data = dat)
+summary(result2)
+```"

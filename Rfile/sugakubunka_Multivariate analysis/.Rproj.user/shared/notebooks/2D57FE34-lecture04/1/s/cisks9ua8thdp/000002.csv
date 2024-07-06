@@ -1,0 +1,6 @@
+"0","```r
+# ロジスティック回帰
+result <- glm(契約結果 ~ 訪問時刻 + 担当者年齢, 
+                  data = dat)
+summary(result)
+```"

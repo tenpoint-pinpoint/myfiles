@@ -1,0 +1,4 @@
+"0","```r
+plot(dat$hp, dat$mpg)
+lines(sort(dat$hp), predict(result_deg2)[order(dat$hp)]) 
+```"

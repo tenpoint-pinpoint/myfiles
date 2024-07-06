@@ -1,0 +1,33 @@
+---
+title: "決定木"
+author: "大月彩"
+date: "2019/11/22"
+output: html_document
+---
+
+
+## 決定木に関して
+
+成績データを元に分割木を作成した。
+
+```{r}
+library(rpart)
+o1 <- read.csv("ch131.csv",header=T,row.names=1)
+o2 <- rpart(score~age+gender+trial,data=o1)
+library(rpart.plot)
+rpart.plot(o2,extra=2)
+``` 
+
+集合を分割するsubsetという関数を利用して、グラフと一致するように集合を分割し表を作成した。
+
+```{r}
+o3 <- subset(o1,o1$trial=="New")
+#o3<- o1[o1$trial=="New",]
+table(o3$score)
+o4 <- subset(o3,o3$age=="Under40")
+table(o4$score)
+o5 <- subset(o3,o3$age=="Over40")
+table(o5$gender,o5$score)
+o4 <- subset(o1,o1$trial=="Retry")
+table(o5$score)
+```

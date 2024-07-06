@@ -1,0 +1,48 @@
+library("tidyverse")
+library("MatchIt")
+library("broom")
+
+# ロジスティック回帰で傾向スコアを算出
+ps_model <- glm(data = biased_data,                                   #データセットの指定
+                formula = treatment ? recency + history + channel,    #推定式を作っています。
+                family = binomial)                                     #ロジスティック回帰を指定しています
+
+# 傾向スコアを利用したマッチング
+m_near <- matchit(formula = treatment ? recency + history + channel,  #推定式を作っています
+                  data = biased_data,                                 #データセットの指定
+                  method = "nearest",                                 #マッチング方法の指定
+                  replace = TRUE)
+
+# matchit関数のデフォルト設定を見ておく
+$info$method　[1] "nearest"
+## マッチングの方法。nearestは最近傍マッチング。ほかにもいろいろある
+$info$distance[1] "glm"
+## 距離メジャーを推定するためのオプション、glmは一般化線形モデル
+$info$link[1] "logit"
+## リンク関数の指定、デフォルトはロジット関数のようです
+$info$discard[1] "none"
+## 距離測定サポート範囲外にある単位を破棄するかどうか。noneは破棄しない
+$info$replace[1] TRUE
+## 復元抽出の場合、１度別のペアで選択されたデータもマッチング候補になる
+$info$ratio[1] 1
+## １サンプルに対しコントロールをいくつマッチングさせるかの指定、1:多にするってどんな時なんだろ
+$info$max.controls　NULL
+## ????
+$info$mahalanobis[1] FALSE
+## マハラノビスについての何か。distanceのオプション？よくわからなかった
+info$subclass　NULL
+## ????
+$estimand[1] "ATT"
+## 推定する効果、ATEもできるっぽい
+
+# マッチング後のデータを作成
+matched_data <- match.data(m_near)
+
+# マッチング後のデータで効果の推定
+PSM_result <- matched_data %>%
+  lm(spend ? treatment,data = .) %>%
+  tidy()
+
+PSM_result
+
+
