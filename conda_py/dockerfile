@@ -16,10 +16,9 @@ CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--LabApp.token=''"]
 
 # docker操作のためのメモ
 # conda環境を作るdockerfileとコード
-# analysis/conda_py
 
 # dockerfikeからイメージ作る→dockerfileのあるディレクトリに移動して実行
-# docker build -t conda_py
+# docker build -t conda_py .
 
 # コンテナをビルド
-# docker run -v /Users/yoshikawahiroshi/Documents/analysis/conda_py:/app -p 8888:8888 --name  # conda_py conda_py
+# docker run -v /Users/yoshikawahiroshi/Documents/analysis/conda_py:/app -p 8888:8888 --name conda_py conda_py
