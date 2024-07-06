@@ -1,0 +1,18 @@
+import numpy as np
+from scipy import linalg
+
+class LinearRegression:
+    def __init__(self):
+        self.w_ = None
+        
+    def fit(self, X, y):
+        Xtil = np.c_[np.ones(X.shape[0]), X] # デザイン行列の作成
+        A = np.dot(Xtil.T, Xtil)
+        b = np.dot(Xtil.T, y)
+        self.w_ = linalg.solve(A, b) # wの計算。連立方程式の解法の応用
+        
+    def predict(self, X):
+        if X.ndim == 1:
+            X = X.reshape(1, -1)
+        Xtil = np.c_[np.ones(X.shape[0]), X]
+        return np.dot(Xtil, self.w_)

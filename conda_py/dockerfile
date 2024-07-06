@@ -1,0 +1,24 @@
+# ベースとなるDockerイメージを指定
+FROM continuumio/anaconda3
+
+# 作業ディレクトリを設定
+WORKDIR /app
+
+# 必要なパッケージをインストール
+RUN conda install -y numpy pandas scikit-learn matplotlib seaborn scipy==1.12.0
+# ポート番号を指定（Jupyter Notebookを使う場合）
+EXPOSE 8888
+
+# コンテナ起動時に実行するコマンドを設定（Jupyter Notebookを使う場合）
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--LabApp.token=''"]
+
+
+
+# docker操作のためのメモ
+# conda環境を作るdockerfileとコード
+
+# dockerfikeからイメージ作る→dockerfileのあるディレクトリに移動して実行
+# docker build -t conda_py .
+
+# コンテナをビルド
+# docker run -v /Users/yoshikawahiroshi/Documents/analysis/conda_py:/app -p 8888:8888 --name conda_py conda_py

@@ -1,0 +1,15 @@
+version: '3'
+services:
+  rstudio:
+    build: .
+    image: tidyverse:4.1.1_jp
+    container_name: R_2021
+    environment:
+      - PASSWORD=tenpoint4418
+    ports:
+      - 8787:8787
+    volumes:
+      - /Users/yoshikawahiroshi/Documents/Rfile:/home/rstudio
+    tty: true
+    stdin_open: true
+
