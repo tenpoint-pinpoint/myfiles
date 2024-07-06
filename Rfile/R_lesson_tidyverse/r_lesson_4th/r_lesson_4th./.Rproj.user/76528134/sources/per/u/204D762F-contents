@@ -1,0 +1,12 @@
+sales %>% group_by(顧客名, 商品名) %>% 
+  tally() %>% 
+  spread(key = 商品名, value = n) %>% 
+  mutate_at(vars(-顧客名), funs(ifelse(is.na(.), 0, .)))  #NAを０に変換している
+
+sales %>% group_by(顧客名, 商品名) %>% 
+  tally() %>% 
+  spread(key = 商品名, value = n, fill = 0) #fill = NAを０で埋める新しい方法
+
+sales %>% group_by(顧客名, 商品名) %>% 
+  tally() %>% 
+  spread(key = 商品名, value = n, fill = 0, drop = TRUE) # drop=NAをしかない項目を残す

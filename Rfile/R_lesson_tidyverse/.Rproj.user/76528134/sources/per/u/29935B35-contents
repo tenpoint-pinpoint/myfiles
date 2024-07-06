@@ -1,0 +1,9 @@
+library(tidyverse)
+
+mpg_group <- mpg
+mpg <- mpg_group
+
+
+mpg_group %>%
+  group_by(manufacturer, year) %>% 
+  

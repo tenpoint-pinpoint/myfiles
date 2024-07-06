@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1584698587144.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4214919871",
+    "id" : "9A9D0187",
+    "lastKnownWriteTime" : 1583156250,
+    "last_content_update" : 1583156250,
+    "path" : "~/Documents/R_lesson_tidyverse/r_lesson_4th/ggplot.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

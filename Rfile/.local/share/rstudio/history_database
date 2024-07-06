@@ -1,0 +1,60 @@
+0:log(100)
+0:log(1000)
+1675860115411:cars
+1675860125712:dat <- cars
+1675860155569:lm(dat, formula = speed ~ dist)
+1675860177797:cor(dat$speed, dat$dist)
+1675860195651:library(tidyverse)
+1675860293465:dat_limit <- dat %>%
+1675860293506:arrange(speed)
+1675860296887:dat_limit <- dat %>%
+1675860296898:arrange(speed)
+1675860301833:dat_limit
+1675860349641:dat_limit <- dat %>%
+1675860349655:arrange(speed) %>%
+1675860349672:dat_limit[10]
+1675860355987:dat_limit <- dat %>%
+1675860355997:arrange(speed) %>%
+1675860356013:dat_limit[10]
+1675860422323:dat_un <- dat_limit[1:30]
+1675860422334:dat_up <- dat_limit[20:50]
+1675860456058:lm(dat, formula = speed ~ dist)
+1675860456071:lm(dat_un, formula = speed = dist)
+1675860456081:lm(dat_up, formula = speed = dist)
+1675860467817:lm(dat, formula = speed ~ dist)
+1675860467830:lm(dat_un, formula = speed ~ dist)
+1675860467847:lm(dat_up, formula = speed ~ dist)
+1675860479113:dat_up
+1675860488875:dat_un <- dat_limit[1:30,]
+1675860488889:dat_up <- dat_limit[20:50,]
+1675860499792:dat_up
+1675860509660:typeof(dat_limit)
+1675860516629:dat_limit <- dat %>%
+1675860516640:arrange(speed)
+1675860518495:typeof(dat_limit)
+1675860523430:dat_un <- dat_limit[1:30,]
+1675860523444:dat_up <- dat_limit[20:50,]
+1675860527313:lm(dat, formula = speed ~ dist)
+1675860527327:lm(dat_un, formula = speed ~ dist)
+1675860527340:lm(dat_up, formula = speed ~ dist)
+1675860672411:lm(dat, formula = dist ~ speed)
+1675860672424:lm(dat_un, formula = dist ~ speed)
+1675860672437:lm(dat_up, formula = dist ~ speed)
+1675860729540:lm(dat, formula = dist ~ speed)
+1675860729553:lm(dat_un_2, formula = dist ~ speed)
+1675860729563:lm(dat_up_2, formula = dist ~ speed)
+1675860737094:dat_un_2 <- dat_limit_2[1:30,]
+1675860737104:dat_up_2 <- dat_limit_2[20:50,]
+1675860741230:dat_limit_2 <- dat %>%
+1675860741242:arrange(dist)
+1675860743056:dat_un_2 <- dat_limit_2[1:30,]
+1675860743066:dat_up_2 <- dat_limit_2[20:50,]
+1675860745402:lm(dat, formula = dist ~ speed)
+1675860745415:lm(dat_un_2, formula = dist ~ speed)
+1675860745427:lm(dat_up_2, formula = dist ~ speed)
+1675860752241:lm(dat, formula = speed ~ dist)
+1675860752257:lm(dat_un, formula = speed ~ dist)
+1675860752270:lm(dat_up, formula = speed ~ dist)
+1675860814057:cor(dat$speed, dat$dist)
+1675860814067:cor(dat_un$speed, dat_un$dist)
+1675860814077:cor(dat_up$speed, dat_up$dist)

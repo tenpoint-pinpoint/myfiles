@@ -1,0 +1,341 @@
+library(tidyverse)
+library(readxl)
+library(skimr)
+
+# ------------------------------------------------------------------------------------------
+# 練習問題
+# ------------------------------------------------------------------------------------------
+# データ読み込み(ファイルパスは書き換えてください)
+titanic <- read_csv("/Users/yoshikawahiroshi/Documents/R_lesson_tidyverse/R_lesson_3rd/titanic.csv")
+# titanic <- read_csv("C:/Users/川原祐哉/Rstudio/tidyverse/titanic.csv", locale = locale(encoding="CP932"))
+# 読み込んだファイルが文字化けしたときは、locale = locale(encoding="CP932")と指定してみる
+
+# (1) skim()でデータの確認をする
+
+
+# (2) 変数Name、Age、Sexを抽出する
+titanic %>%
+  select(Name, Age, Sex)
+
+# (3) 変数Ticket、Fare、Cabin、Embarkedを削除
+titanic %>%
+  select(-Ticket, -Fare, -Cabin, -Embarked)
+
+# (4) 変数名がPで始まる変数を抽出
+titanic %>%
+  select(starts_with("P"))
+
+# (5) 変数名がdで終わる変数を抽出
+titanic %>%
+  select(ends_with("d"))
+
+# (6) 変数名にOrを含む変数を抽出
+titanic %>%
+  select(contains("Or"))
+
+# (7) 変数Name、Age、Sexを最初(1列～3列)に配置
+titanic %>%
+  select(Name, Age, Sex, everything())
+
+# (8) 変数ChiOrAdを抽出し、x1に名前を変更
+titanic %>%
+  select(x1 = ChiOrAd)
+
+# (9) 変数名がdで終わる変数を抽出し、x〇〇に名前を変更(〇〇は連番)
+titanic %>%
+  select(x = ends_with("d"))
+
+# (10) 変数Ageの変数名を年齢に変更(その他の変数はそのまま残す)
+titanic %>%
+  select(年齢 = Age)
+
+
+
+# データ読み込み(ファイルパスは書き換えてください)
+sales <- read_excel("sales.xlsx")
+
+# (11) 変数"単価"を半分にした変数"新単価"を新たに作成
+
+
+# (12) 変数"数量"が100以上であれば1、そうでなければ0をとる変数"数量100"を新たに作成
+
+
+# (13) 変数"数量"が100以上であれば2、100未満50以上で1、50未満で0をとる変数"数量100.50"を新たに作成
+
+
+# (14) 変数"単価"を半分にした変数"新単価"のみを抽出
+
+
+# (15) 行番号(ID)を作成
+
+
+# (16) 変数"単価"、"数量"、"金額"の平均値を計算
+
+
+# (17) 変数"単価"、"数量"、"金額"の標準偏差を計算
+
+
+# (18) 変数"分類"でグループ化
+
+
+# (19) 変数"分類"の値ごとに変数"単価"、"数量"、"金額"の平均値を計算
+
+
+# (20) 変数"顧客名"の値ごとに金額の合計を計算
+
+
+# (21) 変数"数量"が100以上か100未満かでグループ化し、グループごとに変数"単価"の平均を計算
+
+
+# (22) 変数"販売エリア"と変数"分類"でグループ化し、グループごとに変数"金額"の平均を計算
+
+
+# (23) 変数"単価"、"数量"、"金額"をtidy化
+
+
+# (24) 変数"顧客名"、"支社名"、"商品名"をtidy化
+
+
+# (25) 変数"単価"、"数量"、"金額"の値を10倍する
+
+
+# (26) 変数"単価"、"数量"、"金額"の値を10の位で四捨五入する
+
+
+# (27) 全ての変数の型を因子型に変換
+
+
+# (28) 全ての文字列型の変数を因子型に変換
+
+
+# (29) 数値型の変数全ての平均を計算
+
+
+# (30) 変数"顧客名"と変数"商品名"のクロス集計表を作成
+
+
+# (31) 変数"販売エリア"と変数"分類"のクロス集計表を作成
+
+
+# (32) 変数"顧客名"と変数"商品名"のクロス集計表を作成し、セルに合計金額を表示
+
+
+# (33) 変数"販売エリア"と変数"分類"のクロス集計表を作成し、セルに合計金額を表示
+
+
+
+
+
+
+
+# ------------------------------------------------------------------------------------------
+# 解答例
+# ------------------------------------------------------------------------------------------
+# データ読み込み(ファイルパスは書き換えてください)
+titanic <- read_csv("titanic.csv")
+
+
+# (1) skim()でデータの確認をする
+titanic %>% skim()
+
+# (2) 変数Name、Age、Sexを抽出する
+titanic %>% select(Name, Age, Sex)
+
+titanic %>% select(4, 5, 6)
+
+titanic %>% select(Name:Sex)
+
+titanic %>% select(4:6)
+
+# (3) 変数Ticket、Fare、Cabin、Embarkedを削除
+titanic %>% select(-Ticket, -Fare, -Cabin, -Embarked)
+
+titanic %>% select(-10, -11, -12, -13)
+
+titanic %>% select(-c(Ticket, Fare, Cabin, Embarked))
+
+titanic %>% select(-c(Ticket:Embarked))
+
+# (4) 変数名がPで始まる変数を抽出
+titanic %>% select(starts_with("P"))
+
+# (5) 変数名がdで終わる変数を抽出
+titanic %>% select(ends_with("d"))
+
+# (6) 変数名にOrを含む変数を抽出
+titanic %>% select(contains("Or"))
+
+# (7) 変数Name、Age、Sexを最初(1列～3列)に配置
+titanic %>% select(Name, Age, Sex, everything())
+
+# (8) 変数ChiOrAdを抽出し、x1に名前を変更
+titanic %>% select(x1 = ChiOrAd)
+
+# (9) 変数名がdで終わる変数を抽出し、x〇〇に名前を変更(〇〇は連番)
+titanic %>% select(x = ends_with("d"))
+
+# (10) 変数Ageの変数名を年齢に変更(その他の変数はそのまま残す)
+titanic %>% rename(年齢 = Age)
+
+
+
+# データ読み込み
+sales <- read_excel("sales.xlsx")
+
+# (11) 変数"単価"を半分にした変数"新単価"を新たに作成
+sales %>% mutate(新単価 = 単価/2)
+
+
+# (12) 変数"数量"が100以上であれば1、そうでなければ0をとる変数"数量100"を新たに作成
+sales %>% mutate(数量100 = if_else(数量 >= 100, 1, 0))
+
+
+# (13) 変数"数量"が100以上であれば2、100未満50以上で1、50未満で0をとる変数"数量100.50"を新たに作成
+sales %>% mutate(数量100.50 = case_when(数量 >= 100 ~ 2,
+                                        数量 >= 50 ~ 1,
+                                        TRUE ~ 0))
+
+
+# (14) 変数"単価"を半分にした変数"新単価"のみを抽出
+sales %>% transmute(新単価 = 単価/2)
+
+
+# (15) 行番号(ID)を作成
+sales %>% rownames_to_column("ID")
+
+
+# (16) 変数"単価"、"数量"、"金額"の平均値を計算
+sales %>% summarise(平均単価 = mean(単価),
+                        平均数量 = mean(数量),
+                        平均金額 = mean(金額))
+
+
+# (17) 変数"単価"、"数量"、"金額"の標準偏差を計算
+sales %>% summarise(単価SD = sd(単価),
+                      数量SD = sd(数量),
+                      金額SD = sd(金額))
+
+
+# (18) 変数"分類"でグループ化
+sales %>% group_by(分類)
+
+
+# (19) 変数"分類"の値ごとに変数"単価"、"数量"、"金額"の平均値を計算
+sales %>% group_by(分類) %>% 
+  summarise(平均単価 = mean(単価),
+                平均数量 = mean(数量),
+                平均金額 = mean(金額))
+
+
+# (20) 変数"顧客名"の値ごとに金額の合計を計算
+sales %>% group_by(顧客名) %>% 
+  summarise(合計金額 = sum(金額))
+
+
+# (21) 変数"数量"が100以上か100未満かでグループ化し、グループごとに変数"単価"の平均を計算
+sales %>% group_by(数量100 = if_else(数量 >= 100, "数量100以上", "数量100未満")) %>% 
+  summarise(平均単価 = mean(単価))
+
+
+# (22) 変数"販売エリア"と変数"分類"でグループ化し、グループごとに変数"金額"の平均を計算
+sales %>% group_by(販売エリア, 分類) %>% 
+  summarise(平均金額 = mean(金額))
+
+
+# (23) 変数"単価"、"数量"、"金額"をtidy化
+sales %>% gather(key = key, value = value, 単価, 数量, 金額)
+
+
+# (24) 変数"顧客名"、"支社名"、"商品名"をtidy化
+sales %>% gather(key = key, value = value, 顧客名, 支社名, 商品名)
+
+
+# (25) 変数"単価"、"数量"、"金額"の値を10倍する
+sales %>% gather(key = key, value = value, c(単価, 数量, 金額), factor_key = TRUE) %>% 
+  mutate(value = value * 10) %>% 
+  spread(key = key, value = value)
+
+
+# (26) 変数"単価"、"数量"、"金額"の値を10の位で四捨五入する
+sales %>% gather(key = key, value = value, c(単価, 数量, 金額), factor_key = TRUE) %>% 
+  mutate(value = round(value, -2)) %>% 
+  spread(key = key, value = value)
+
+sales %>% mutate_at(c("単価", "数量", "金額"), round, -2)
+
+
+# (27) 全ての変数の型を因子型に変換
+sales %>% mutate_all(as.factor)
+
+
+# (28) 全ての文字列型の変数を因子型に変換
+sales %>% mutate_if(is.character, as.factor)
+
+
+# (29) 数値型の変数全ての平均を計算
+sales %>% summarise_if(is.numeric, mean)
+
+
+# (30) 顧客名と商品名のクロス集計表を作成
+sales %>% group_by(顧客名, 商品名) %>% 
+  tally() %>% 
+  spread(key = 商品名, value = n) %>% 
+  mutate_at(vars(-顧客名), funs(ifelse(is.na(.), 0, .)))
+
+sales %>% group_by(顧客名, 商品名) %>% 
+  summarise(n = n()) %>% 
+  spread(key = 商品名, value = n) %>% 
+  mutate_at(vars(-顧客名), funs(ifelse(is.na(.), 0, .)))
+
+sales %>% count(顧客名, 商品名) %>% 
+  spread(key = 商品名, value = n) %>% 
+  mutate_at(vars(-顧客名), funs(ifelse(is.na(.), 0, .)))
+
+
+# (31) 変数"販売エリア"と変数"分類"のクロス集計表を作成
+sales %>% group_by(販売エリア, 分類) %>% 
+  tally() %>% 
+  spread(key = 分類, value = n)
+
+sales %>% group_by(販売エリア, 分類) %>% 
+  summarise(n = n()) %>% 
+  spread(key = 分類, value = n)
+
+sales %>% count(販売エリア, 分類) %>% 
+  spread(key = 分類, value = n)
+
+
+# (32) 変数"顧客名"と変数"商品名"のクロス集計表を作成し、セルに合計金額を表示
+sales %>% group_by(顧客名, 商品名) %>% 
+  summarise(sum = sum(金額)) %>% 
+  spread(key = 商品名, value = sum) %>% 
+  mutate_at(vars(-顧客名), funs(ifelse(is.na(.), 0, .)))
+
+
+# (33) 変数"販売エリア"と変数"分類"のクロス集計表を作成し、セルに合計金額を表示
+sales %>% group_by(販売エリア, 分類) %>% 
+  summarise(sum = sum(金額)) %>% 
+  spread(key = 分類, value = sum) %>%  
+  mutate_at(vars(-販売エリア), funs(ifelse(is.na(.), 0, .)))
+
+# (34) 変数"分類"がお茶のデータのみを抽出
+sales %>% filter(分類 == "お茶")
+
+# (35) 変数"単価"の値が900より大きいデータのみを抽出
+sales %>% filter(単価 > 900)
+
+# (36) 変数"分類"がお茶で、かつ変数"単価"が900より大きいデータのみを抽出
+sales %>% filter(分類 == "お茶", 単価 > 900)
+
+# (37) 変数"単価"が900より大きい、または変数"数量"が100より大きいデータのみを抽出
+sales %>% filter(単価 > 900| 数量 > 100)
+
+# (38) 変数"分類"がお茶でなく、かつ変数"支社名"が本社でもないデータのみを抽出
+sales %>% filter(!(分類 == "お茶"| 支社名 == "本社"))
+
+sales %>% filter(!(分類 == "お茶"),  !(支社名 == "本社"))
+
+
+
+
+

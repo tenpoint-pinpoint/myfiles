@@ -1,0 +1,19 @@
+---
+title: "Sample"
+author: "Toshio Akimitsu"
+date: "2019/6/3"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 練習
+
+これは練習です。
+```{r}
+y1 <- c(45,50,55,70,80)
+y3 <- mean(y1)
+print(y1)
+```

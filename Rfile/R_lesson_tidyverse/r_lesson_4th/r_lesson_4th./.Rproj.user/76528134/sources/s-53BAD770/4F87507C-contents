@@ -1,0 +1,244 @@
+library(tidyverse)
+library(forcats)
+
+# factorデータの操作に特化したパッケージ
+
+# 使用データ1
+f <- factor(c("b", "b", "a", "c", "c", "c"), levels = c("a", "b", "c", "d"))
+ff <- factor(c("b", "b", "a", "c", "c", "c"))
+
+# 使用データ2
+gss_cat <- gss_cat
+
+# 変数説明
+# year    : year of survey, 2000--2014
+# marital : marital status
+# age     : age. Maximum age truncated to 89.
+# race    : race
+# rincome : reported income
+# partyid : party affiliation
+# relig   : religion
+# denom   : denomination
+# tvhours : hours per day watching tv
+
+# 使用データ3
+iris <- iris %>% 
+  as_tibble()
+
+# 使用データ4
+x <- factor(c("Mon", "Tue", "Wed"), levels = c("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"))
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+# factor型データの確認
+# --------------------------------------------------------------------------------------------------------------------------------------
+# factorデータの確認
+f %>% 
+  unclass()
+
+gss_cat$rincome %>% 
+  unclass()
+
+
+# 水準数の確認
+f %>% 
+  nlevels()
+
+gss_cat$rincome %>% 
+  nlevels()
+
+
+# 水準ごとの個数をカウント1
+f %>% 
+  table()
+
+gss_cat$rincome %>% 
+  table()
+
+
+# 水準ごとの個数をカウント2
+f %>% 
+  fct_count()
+
+gss_cat$rincome %>% 
+  fct_count()
+
+
+# 並び替え
+f %>% 
+  fct_count(sort = TRUE)
+
+gss_cat$rincome %>% 
+  fct_count(sort = TRUE)
+
+
+# 割合表示
+f %>% 
+  fct_count(sort = TRUE, prop = TRUE)
+
+gss_cat$rincome %>% 
+  fct_count(sort = TRUE, prop = TRUE)
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+# levelの削除、追加
+# --------------------------------------------------------------------------------------------------------------------------------------
+f
+# fには使っていないlevel(d) が存在する。このlevelを削除する。
+f %>% 
+  fct_drop()
+
+
+# fに新しいlevel(e) を追加する。
+f %>% 
+  fct_expand("e")
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+# factorのorderを変更
+# --------------------------------------------------------------------------------------------------------------------------------------
+# 登場順でlevelsを再整理(fct_inorder)
+ff
+ff %>% 
+  fct_inorder()
+
+f %>% 
+  fct_inorder()
+# エラーがでる。これはデータの中に使っていないlevel(今回はd)が含まれているから。
+# 使っていないlevelを落とすと問題なく動く。
+f %>% 
+  fct_drop() %>% 
+  fct_inorder()
+
+gss_cat$race %>% 
+  fct_drop() %>% 
+  fct_inorder() %>% 
+  unclass()
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+# 登場回数順でlevelsを再整理(fct_infreq)
+f
+f %>% 
+  fct_infreq()
+
+gss_cat$rincome %>% 
+  fct_infreq() %>% 
+  unclass()
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+# 指定したlevelsを上位に配置(fct_relevel)
+f
+f %>% 
+  fct_relevel("c")
+
+f %>% 
+  fct_relevel("b", "a")
+
+gss_cat$race %>% 
+  fct_relevel("Black") %>% 
+  unclass()
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+# 他の1変数に従ってソートするようlevelsを再整列(fct_reorder)
+iris$Species %>% 
+  unclass()
+# "setosa" "versicolor" "virginica" の順番。これをSepal.Widthの中央値の値によって再順序化(降順)。
+
+iris$Species %>% 
+  fct_reorder(.x = iris$Sepal.Width,　#どの変数の代表値を計算するか？
+              .fun = median,　　　　　#どのような計算を行うか？デフォルトはmedianになっている
+              .desc = FALSE) %>% 　　 #降順・昇順を指定
+  unclass()
+
+# raceのlevelをtvhoursの中央値の値によって際順序化(降順)。
+gss_cat$race %>% 
+  unclass()
+
+gss_cat$race %>% 
+  fct_reorder(.x = gss_cat$tvhours,
+              .fun = median,
+              na.rm = TRUE,
+              .desc = FALSE) %>% 
+  unclass()
+
+
+# グラフの中で軸の並び替えに使う。
+iris %>% 
+  ggplot(aes(x = Species, y = Sepal.Width)) +
+  geom_boxplot()
+
+# Speacies(x軸)をこれをSepal.Widthの中央値の値によって並び替え。
+iris %>% 
+  ggplot(aes(x = fct_reorder(Species, .x = Sepal.Width, .fun = median, .desc = FALSE), y = Sepal.Width)) +
+  geom_boxplot()
+
+
+# グラフの中で軸の並び替えに使う。
+gss_cat %>% 
+  ggplot(aes(x = race, y = tvhours, fill = race)) +
+  stat_summary(geom = "bar", fun.y = mean, na.rm = TRUE)
+
+# tvhoursの平均値の値によって並び替え。
+gss_cat %>% 
+  ggplot(aes(x = fct_reorder(race, .x = tvhours, .fun = mean, na.rm = TRUE, .desc = TRUE), y = tvhours, fill = race)) +
+  stat_summary(geom = "bar", fun.y = mean, na.rm = TRUE)
+
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+# levelsの順序を反転(fct_rev)
+f
+f %>% 
+  fct_rev()
+
+ff %>% 
+  fct_rev()
+
+gss_cat$race %>% 
+  fct_rev() %>% 
+  unclass()
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+# 順序付きfactorデータのlevelsの順序をずらす(fct_shift)
+x
+x %>% 
+  unclass()
+
+x %>% 
+  fct_shift()
+
+x %>% 
+  fct_shift(n = 2)
+
+x %>% 
+  fct_shift(n = -2)
+
+
+
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+# クロス集計表の表側の順番を変える
+# データの用意
+iris.cros <- iris %>% 
+  mutate(SL4.8 = if_else(Sepal.Length >= 4.8, "4.8以上", "4.8未満"))    # Sepal.Lengthが5以上かそうでないかを表す変数を作成
+
+# SpeciesとSL4.8のクロス集計表を作成(countを用いて)
+iris.cros %>% 
+  count(Species, SL4.8) %>%
+  spread(key = SL4.8, value = n, fill = 0)
+# 上から"setosa", "versicolor", "virginica"の順番。これを"versicolor", "virginica", "setosa"の順番にする。
+
+iris.cros %>% 
+  count(Species, SL4.8) %>%
+  spread(key = SL4.8, value = n, fill = 0) %>% 
+  mutate(Species = fct_relevel(Species, "versicolor", "virginica", "setosa")) %>%         # levelを際順序化
+  arrange(Species)                                                                        # Speciesで並び替え
+
+
+
+

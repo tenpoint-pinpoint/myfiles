@@ -1,0 +1,379 @@
+library(tidyverse)
+library(skimr)
+
+# ------------------------------------------------------------------------------------------
+# 練習問題
+# ------------------------------------------------------------------------------------------
+# データ読み込み
+titanic <- read_csv("/Users/yoshikawahiroshi/Documents/R_lesson_tidyverse/r_lesson_4th/titanic.csv")
+titanic
+
+# データの整形
+titanic %>% skim()
+
+# 変数Cabin, ChiOrAdを削除した後に欠損値をリストワイズ削除する
+#　リストワイズ削除 → 解析対象とされる複数の変数のどれか１つでも欠損価を持つ場合、計算から除外すること
+titanic <- titanic %>%
+  select(-c(Cabin, ChiOrAd)) %>%
+  na.omit() #リストワイズ削除している。欠損値の取り扱いを（）内で規定することもある
+
+# PclassとSurvivedをchr型に変換する
+titanic <- titanic %>% mutate(Survived = as.character(Survived),
+                   Pclass = as.character(Pclass))
+titanic %>% skim()
+
+
+# (1) Ageのヒストグラムを作成する(ビンの数を20に固定)
+ggplot() +
+  geom_histogram(data = titanic, mapping = aes(x = Age), bins = 20)
+
+# (2) Ageのヒストグラムを作成する(ビンの幅を5に固定)
+ggplot() +
+  geom_histogram(data = titanic, mapping = aes(x = Age), binwidth = 5)
+
+# (3) Ageのヒストグラムを作成する(密度プロットを重ね、見えやすいように色分けをする)
+ggplot(data = titanic, mapping = aes(x = Age, y = ..density..))+
+  geom_histogram( binwidth = 5) +
+  geom_density(fill = "red", alpha = 0.3)
+
+# (4) 男性のみの年齢のヒストグラムを作成する
+titanic %>% filter(Sex == "male") %>%
+ggplot(aes(x = Age)) +
+  geom_histogram(bins = 20)
+
+titanic %>% filter(Sex == "male") %>% 
+  ggplot(aes(x = Age)) +
+  geom_histogram(binwidth = 5)
+
+
+# (5) 男女別にAgeのヒストグラムを作成し、縦に並べて表示する
+ggplot() +
+  geom_histogram(data = titanic, mapping = aes(x = Age), binwidth = 5) +
+  facet_wrap(. ~ Sex)
+
+# (6) Pclass別にAgeのヒストグラムを作成し、横に並べて表示する
+ggplot() +
+  geom_histogram(data = titanic, mapping = aes(x = Age), binwidth = 5) +
+  facet_wrap(. ~ Pclass)
+
+# (7) PclassとSexで層別化(6グループ)したAgeのヒストグラムを作成し、並べて表示をする(行列配置)
+ggplot() +
+  geom_histogram(data = titanic, mapping = aes(x = Age), binwidth = 5) +
+  facet_grid(Sex ~ Pclass)
+
+
+# (8) Survivedで層別化したAgeのヒストグラムを重ねて表示する
+ggplot(data = titanic, mapping = aes(x = Age)) +
+  stat_summary(geom = "histogram", fun.y = "Survived")
+  geom_histogram(binwidth = 5) 
+  
+  
+titanic %>% ggplot(aes(x = Age, fill = Survived)) +
+  geom_histogram(binwidth = 5, position = "identity", alpha = 0.4)
+
+
+# (9) Sexで層別化したAgeのヒストグラムを重ねて表示する
+ggplot(data = titanic, mapping = aes(x = Age,fill = Sex)) +
+  geom_histogram(binwidth = 5, position = "identity", alpha = 0.5)
+
+
+titanic %>% ggplot(aes(x = Age), fill = Sex) +
+  geom_histogram(binwidth = 5, position = "identity", alpha = 0.4)
+
+# (10) AgeとFareの散布図を作成する
+ggplot(data = titanic, mapping = aes(x = Age, y = Fare)) +
+  geom_point()
+
+# (11) AgeとFareの散布図に回帰直線を引く
+ggplot(data = titanic, mapping = aes(x = Age, y = Fare)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+
+# (12) Sexで層別化したAgeとFareの散布図を作成する(色で分ける)
+ggplot(data = titanic, mapping = aes(x = Age, y = Fare, color = Sex)) +
+  geom_point()
+
+# (13) Sexで層別化したAgeとFareの散布図を作成する(形で分ける)
+ggplot(data = titanic, mapping = aes(x = Age, y = Fare, shape = Sex)) +
+  geom_point()
+
+
+# (14) SibSpで層別化したAgeとFareの散布図を作成する
+ggplot(data = titanic, mapping = aes(x = Age, y = Fare, color = SibSp)) + 
+  geom_point()
+  
+# (15) Pclassで層別化したAgeとFareの散布図を作成する
+ggplot(data = titanic, mapping = aes(x = Age, y = Fare, color = Pclass)) + 
+  geom_point()
+
+# (16) (15)の散布図にタイトル("AgeとFareの関係")を追加する
+titanic %>% ggplot(aes(x = Age, y = Fare, color = Pclass)) +
+  geom_point(size = 2) +
+  labs(title = "AgeとFareの関係") +
+  theme_gray(base_family = "HiraKakuPro-W3")
+
+
+
+# (17) PclassごとのAgeの箱ひげ図の作成する
+ggplot(data = titanic, mapping = aes(x = Pclass, y = Age)) +
+  geom_boxplot()
+
+# (18) (17)の箱ひげ図にデータ点を追加する
+titanic %>% ggplot(aes(x = Pclass, y = Age)) +
+  geom_boxplot() +
+  geom_jitter()
+
+# (19) PclassごとのAgeのバイオリンプロットを作成する
+titanic %>% ggplot(aes(x = Pclass, y = Age)) +
+  geom_violin()
+
+# (20) PclassごとのAgeのバイオリンプロットを作成する(データ数を面積に反映させる)
+titanic %>% ggplot(aes(x = Pclass, y = Age)) +
+  geom_violin(scale = "area")
+
+# (21) PclassごとのAgeの平均値を棒グラフで表示する
+ggplot(data = titanic, mapping = aes(x =Pclass, y = Age)) +
+  geom_bar(stat = "summary",fun.y = "mean") +
+  labs(y = "Age_mean")
+
+
+titanic %>% group_by(Pclass) %>% 
+  summarise(Age_mean = mean(Age)) %>% 
+  ggplot(aes(x = Pclass, y = Age_mean)) +
+  geom_bar(stat = "identity")
+
+titanic %>% ggplot(aes(x = Pclass, y = Age)) +
+  geom_bar(stat = "summary", fun.y = "mean") +
+  labs(y = "Age_mean")
+
+titanic %>% ggplot(aes(x = Pclass, y = Age)) +
+  stat_summary(geom = "bar", fun.y = "mean") +
+  labs(y = "Age_mean")
+
+# (22) PclassごとのAgeの標準偏差を棒グラフで表示する
+ggplot(data = titanic, mapping = aes(x = Pclass, y = Age)) +
+  geom_bar(stat = "summary", fun.y = "sd")
+
+titanic %>% group_by(Pclass) %>% 
+  summarise(Age_sd = sd(Age)) %>% 
+  ggplot(aes(x = Pclass, y = Age_sd)) +
+  geom_bar(stat = "identity")
+
+titanic %>% ggplot(aes(x = Pclass, y = Age)) +
+  geom_bar(stat = "summary", fun.y = "sd") +
+  labs(y = "Age_sd")
+
+titanic %>% ggplot(aes(x = Pclass, y = Age)) +
+  stat_summary(geom = "bar", fun.y = "sd") +
+  labs(y = "Age_sd")
+
+
+# (23) Sexで層別化したPclassごとのAgeの平均値を棒グラフで表示する(横に並べて表示)
+ggplot(data = titanic, mapping = aes(x = Pclass, y = Age, fill = Sex)) +
+  geom_bar(stat = "summary", fun.y = "mean", position = "dodge") +
+  labs(y = "Age_meam_evAex")
+
+# (24) Sexで層別化したPclassごとのAgeの標準偏差を棒グラフで表示する(横に並べて表示)
+ggplot(data = titanic, mapping = aes(x = Pclass, y = Age, fill = Sex)) +
+  geom_bar(stat = "summary", fun.y = "sd", position = "dodge") +
+  labs(y = "Age_sd_evAex")
+
+
+# (25) PurvivedごとのPclassの個数を棒グラフで表示する(横に並べて表示)
+ggplot(data = titanic, mapping = aes(x = Pclass, fill = Survived)) +
+  geom_bar(position = "dodge") +
+  labs(y = "Age_n_evAex")
+
+titanic %>% ggplot(aes(x = Pclass, fill = Survived)) +
+  geom_bar(position = "dodge")
+
+
+# (26) SexごとのSurvivedの個数を棒グラフで表示する(横に並べて表示)
+ggplot(data = titanic, mapping = aes(x = Survived, fill = Sex)) +
+  geom_bar(position = "dodge")
+
+# (27) Survivedで層別化したAge,Fare,SibSpの散布図行列を作成
+ggplot(data = titanic, mapping = aes(x = Age, y = Fare, fill = Survived)) +
+  geom_point()
+
+titanic %>% select(Age,Fare,SibSp,Survived) %>%
+  ggpairs(aes_string(color = "Survived"))
+
+library(GGally)
+titanic %>% select(Survived, Age, Fare, SibSp) %>% 
+  ggpairs(aes_string(color = "Survived", alpha = 0.5))
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ------------------------------------------------------------------------------------------
+# 解答例
+# ------------------------------------------------------------------------------------------
+# データ読み込み
+titanic <- read_csv("titanic.csv")
+titanic
+
+# データの整形
+titanic %>% skim()
+
+# 変数Cabin, ChiOrAdを削除した後に欠損値をリストワイズ削除する
+titanic <- titanic %>%
+  select(-c(Cabin, ChiOrAd)) %>%
+  na.omit()
+
+# PclassとSurvivedをchr型に変換する
+titanic <- titanic %>% mutate(Survived = as.character(Survived),
+                              Pclass = as.character(Pclass))
+
+
+
+# (1) Ageのヒストグラムを作成する(ビンの数を20に固定)
+titanic %>% ggplot(aes(x = Age)) +
+  geom_histogram(bins = 20)
+
+# (2) Ageのヒストグラムを作成する(ビンの幅を5に固定)
+titanic %>% ggplot(aes(x = Age)) +
+  geom_histogram(binwidth = 5)
+
+# (3) Ageのヒストグラムを作成する(密度プロットを重ね、見えやすいように色分けをする)
+titanic %>% ggplot(aes(x = Age, y = ..density..)) +
+  geom_histogram(binwidth = 5,fill = "white", color = "black" ) +
+  geom_density(fill = "black", alpha = 0.3)
+
+# (4) 男性のみの年齢のヒストグラムを作成する
+titanic %>% filter(Sex == "male") %>% 
+  ggplot(aes(x = Age)) +
+  geom_histogram(binwidth = 5)
+
+# (5) 男女別にAgeのヒストグラムを作成し、縦に並べて表示する
+titanic %>% ggplot(aes(x = Age)) +
+  geom_histogram(binwidth = 5) +
+  facet_grid(Sex ~ .)
+
+# (6) Pclass別にAgeのヒストグラムを作成し、横に並べて表示する
+titanic %>% ggplot(aes(x = Age)) +
+  geom_histogram(binwidth = 5) +
+  facet_wrap(Pclass ~ ., nrow = 3)
+
+# (7) PclassとSexで層別化(6グループ)したAgeのヒストグラムを作成し、並べて表示をする(行列配置)
+titanic %>% ggplot(aes(x = Age)) +
+  geom_histogram(binwidth = 5) +
+  facet_grid(Pclass ~ Sex)
+
+# (8) Survivedで層別化したAgeのヒストグラムを重ねて表示する
+titanic %>% ggplot(aes(x = Age, fill = Survived)) +
+  geom_histogram(binwidth = 5, position = "identity", alpha = 0.4)
+
+# (9) Sexで層別化したAgeのヒストグラムを重ねて表示する
+titanic %>% ggplot(aes(x = Age, fill = Sex)) +
+  geom_histogram(binwidth = 5, position = "identity", alpha = 0.4)
+
+# (10) AgeとFareの散布図を作成する
+titanic %>% ggplot(aes(x = Age, y = Fare)) +
+  geom_point(size = 2)
+
+# (11) AgeとFareの散布図に回帰直線を引く
+titanic %>% ggplot(aes(x = Age, y = Fare)) +
+  geom_point(size = 2) +
+  geom_smooth(method = "lm")
+
+# (12) Sexで層別化したAgeとFareの散布図を作成する(色で分ける)
+titanic %>% ggplot(aes(x = Age, y = Fare, color = Sex)) +
+  geom_point(size = 2)
+
+# (13) Sexで層別化したAgeとFareの散布図を作成する(形で分ける)
+titanic %>% ggplot(aes(x = Age, y = Fare, shape = Sex)) +
+  geom_point(size = 2)
+
+# (14) SibSpで層別化したAgeとFareの散布図を作成する
+titanic %>% ggplot(aes(x = Age, y = Fare, color = SibSp)) +
+  geom_point(size = 2)
+
+# (15) Pclassで層別化したAgeとFareの散布図を作成する
+titanic %>% ggplot(aes(x = Age, y = Fare, color = Pclass)) +
+  geom_point(size = 2)
+
+# (16) (15)の散布図にタイトル("AgeとFareの関係")を追加する
+titanic %>% ggplot(aes(x = Age, y = Fare, color = Pclass)) +
+  geom_point(size = 2) +
+  labs(title = "AgeとFareの関係") +
+  theme_gray(base_family = "HiraKakuPro-W3")
+
+# (17) PclassごとのAgeの箱ひげ図の作成する
+titanic %>% ggplot(aes(x = Pclass, y = Age)) +
+  geom_boxplot()
+
+# (18) (17)の箱ひげ図にデータ点を追加する
+titanic %>% ggplot(aes(x = Pclass, y = Age)) +
+  geom_boxplot() +
+  geom_jitter()
+
+# (19) PclassごとのAgeのバイオリンプロットを作成する
+titanic %>% ggplot(aes(x = Pclass, y = Age)) +
+  geom_violin()
+
+# (20) PclassごとのAgeのバイオリンプロットを作成する(データ数を面積に反映させる)
+titanic %>% ggplot(aes(x = Pclass, y = Age)) +
+  geom_violin(scale = "count")
+
+# (21) PclassごとのAgeの平均値を棒グラフで表示する
+titanic %>% group_by(Pclass) %>% 
+  summarise(Age_mean = mean(Age)) %>% 
+  ggplot(aes(x = Pclass, y = Age_mean)) +
+  geom_bar(stat = "identity")
+
+titanic %>% ggplot(aes(x = Pclass, y = Age)) +
+  geom_bar(stat = "summary", fun.y = "mean") +
+  labs(y = "Age_mean")
+
+titanic %>% ggplot(aes(x = Pclass, y = Age)) +
+  stat_summary(geom = "bar", fun.y = "mean") +
+  labs(y = "Age_mean")
+
+# (22) PclassごとのAgeの標準偏差を棒グラフで表示する
+titanic %>% group_by(Pclass) %>% 
+  summarise(Age_sd = sd(Age)) %>% 
+  ggplot(aes(x = Pclass, y = Age_sd)) +
+  geom_bar(stat = "identity")
+
+titanic %>% ggplot(aes(x = Pclass, y = Age)) +
+  geom_bar(stat = "summary", fun.y = "sd") +
+  labs(y = "Age_sd")
+
+titanic %>% ggplot(aes(x = Pclass, y = Age)) +
+  stat_summary(geom = "bar", fun.y = "sd") +
+  labs(y = "Age_sd")
+
+# (23) Sexで層別化したPclassごとのAgeの平均値を棒グラフで表示する(横に並べて表示)
+titanic %>% ggplot(aes(x = Pclass, y = Age, fill = Sex)) +
+  stat_summary(geom = "bar", fun.y = "mean", position = "dodge")
+
+# (24) Sexで層別化したPclassごとのAgeの標準偏差を棒グラフで表示する(横に並べて表示)
+titanic %>% ggplot(aes(x = Pclass, y = Age, fill = Sex)) +
+  stat_summary(geom = "bar", fun.y = "sd", position = "dodge")
+
+# (25) PurvivedごとのPclassの個数を棒グラフで表示する(横に並べて表示)
+titanic %>% ggplot(aes(x = Pclass, fill = Survived)) +
+  geom_bar(position = "dodge")
+
+# (26) SexごとのSurvivedの個数を棒グラフで表示する(横に並べて表示)
+titanic %>% ggplot(aes(x = Sex, fill = Survived)) +
+  geom_bar(position = "dodge")
+
+# (27) Survivedで層別化したAge,Fare,SibSpの散布図行列を作成
+library(GGally)
+titanic %>% select(Survived, Age, Fare, SibSp) %>% 
+  ggpairs(aes_string(color = "Survived", alpha = 0.5))
+
+
+

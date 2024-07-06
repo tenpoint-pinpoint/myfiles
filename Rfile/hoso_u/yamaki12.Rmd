@@ -1,0 +1,31 @@
+---
+title: "Kmeans"
+author: "山城 翔太"
+date: "2019/10/30"
+output: html_document
+---
+
+## kmeans を用いたアメリカの都市の色分け
+
+多次元尺度法を用いてUScitiesD の座標を求める。求めた座標をもとにk平均法でグループに分けて
+グループごとに色分けして表示する。
+
+```{r kmeans}
+u1 <- cmdscale(UScitiesD)
+set.seed(4)
+u2 <- kmeans(u1,3)
+plot(u1,type="n")
+text(u1,rownames(u1),col=u2$cluster)
+```
+
+## 考察
+
+UScitiesD はアメリカの10都市間の直線距離で位置関係をよく再現できている。３個に色分けしたが
+レポートを作成するたびに色が変わるので考察が書きづらい。
+
+## 秋光:コメント
+
+set.seed(整数)とすると乱数を固定できる。
+
+
+

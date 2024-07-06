@@ -1,0 +1,15 @@
+version: '3'
+services:
+  rstudio:
+    build: .
+    image: rstan:latest_jp
+    container_name: rstudio_rstan
+    environment: 
+      #任意のパスワードを設定する
+      - PASSWORD=tenpoint4418 #パスワード
+    ports:
+      - 8787:8787
+    volumes:
+      - /Users/yoshikawahiroshi/Documents/Rfile:/home/rstudio #Rstudioでマウントしたいディレクトリを絶対パスで***に
+    tty: true
+    stdin_open: true

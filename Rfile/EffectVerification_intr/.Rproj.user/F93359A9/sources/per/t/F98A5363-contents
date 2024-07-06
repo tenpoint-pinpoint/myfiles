@@ -1,0 +1,45 @@
+install.packages("WeightIt")  #Iは大文字に注意
+install.packages("cobalt")  
+library("broom")
+library("WeightIt")
+library("tidyverse")
+library("cobalt")
+
+weighting <- weightit(formula = treatment ~ recency + history + channel,
+                     data = biased_data,
+                     method = "ps",
+                     estimand = "ATE")
+
+weighting
+
+#重み付きデータでの効果を推定
+IPW_result <- lm(data = biased_data,
+                 formula = spend ~ treatment,
+                 weights = weighting$weights) %>%
+              tidy()
+
+IPW_result
+
+library("cobalt")
+hist_weighting <- bal.plot(weighting, var.name="prop.score", which="both",
+                           type = "histogram", mirror = TRUE,
+                           sample.names = c("before","adjust"))+
+  scale_fill_discrete(name="treat") +
+  labs(x="PS", y="rate", title = "PS_distribution")
+
+plot(hist_weighting)
+
+#mマッチングしたデータでの共変量のバランス
+love.plot(m_near, threshold = .1, abs = TRUE,)
+
+#重み付きデータでの共変量のバランス
+love.plot(weighting, thresholds = .1, abs = TRUE)
+
+#本とはコードが違うけど、こっちの方が確実
+bal_weighting <- love.plot(weighting, threshold = 0.1, abs = TRUE, grid = TRUE, 
+                     shapes = c(18, 20), color = c("lightseagreen", "tomato"), 
+                     sample.names = c("adjust", "before"),
+                     title = "covariate balance") +
+  labs(x = "ASAM(abs)",
+       shape = "", size = "", stroke = "", colour = "")
+plot(bal_weighting)

@@ -1,0 +1,512 @@
+p1 + p2 + p3 + p4
+attach(price4)
+plot(x5202,type="l")
+attach(price4)
+plot(x5202,type="l")
+plot(x7272,type="l")
+plot(x4927,type="l")
+plot(x4502,type="l")
+detach(2)
+attach(price4)
+pra(mfcol=c(2,2))
+plot(x5202,type="l")
+plot(x7272,type="l")
+plot(x4927,type="l")
+plot(x4502,type="l")
+detach(2)
+attach(price4)
+par(mfcol=c(2,2))
+plot(x5202,type="l")
+plot(x7272,type="l")
+plot(x4927,type="l")
+plot(x4502,type="l")
+detach(2)
+detach(2)
+attach(price4)
+par(mfcol=c(2,2))
+plot(x5202/x5202[1],type="l")
+plot(x7272/x7272[1],type="l")
+plot(x4927/x4972[1],type="l")
+plot(x4502/x4502[1],type="l")
+detach(2)
+attach(price4)
+par(mfcol=c(2,2))
+plot(x5202/x5202[1],type="l")
+plot(x7272/x7272[1],type="l")
+plot(x4927/x4927[1],type="l")
+plot(x4502/x4502[1],type="l")
+detach(2)
+attach(price4)
+par(mfcol=c(2,2))
+plot(diff(log(x5202))*100,type="l")
+plot(diff(log(x7272))*100,type="l")
+plot(diff(log(x4927))*100,type="l")
+plot(diff(log(x4502))*100,type="l")
+detach(2)
+p1 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y = lag(log(x5202))) +
+labs(y="板硝子x5202") +
+theme_gray(base_family = "HiraKakuPro-W3")
+p2 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x7272))) +
+labs(y="ヤマハx7272")+
+theme_gray(base_family = "HiraKakuPro-W3")
+p3 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x4927))) +
+labs(y="ポーラx4927")+
+theme_gray(base_family = "HiraKakuPro-W3")
+p4 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x4502))) +
+labs(y="武田薬品x4502")+
+theme_gray(base_family = "HiraKakuPro-W3")
+p1 + p2 + p3 + p4
+p1 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y = lag(log(x5202))) +
+labs(y="板硝子x5202") +
+theme_gray(base_family = "HiraKakuPro-W3")
+p2 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x7272))) +
+labs(y="ヤマハx7272")+
+theme_gray(base_family = "HiraKakuPro-W3")
+p3 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x4927))) +
+labs(y="ポーラx4927")+
+theme_gray(base_family = "HiraKakuPro-W3")
+p4 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x4502))) +
+labs(y="武田薬品x4502")+
+theme_gray(base_family = "HiraKakuPro-W3")
+p1 + p2 + p3 + p4
+p1 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y = lag(log(x5202))) +
+labs(y="板硝子x5202") +
+theme_gray(base_family = "HiraKakuPro-W3")
+p2 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x7272))) +
+labs(y="ヤマハx7272")+
+theme_gray(base_family = "HiraKakuPro-W3")
+p3 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x4927))) +
+labs(y="ポーラx4927")+
+theme_gray(base_family = "HiraKakuPro-W3")
+p1 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y = lag(log(x5202))) +
+labs(y="板硝子x5202") +
+theme_bw(base_family = "HiraKakuPro-W3")
+p2 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x7272))) +
+labs(y="ヤマハx7272")+
+theme_bw(base_family = "HiraKakuPro-W3")
+p3 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x4927))) +
+labs(y="ポーラx4927")+
+theme_bw(base_family = "HiraKakuPro-W3")
+p4 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x4502))) +
+labs(y="武田薬品x4502")+
+theme_bw(base_family = "HiraKakuPro-W3")
+p1 + p2 + p3 + p4
+p1 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= x5202/x5202[1])) +
+labs(y="板硝子x5202") +
+theme_gray(base_family = "HiraKakuPro-W3")
+p2 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= x7272/x7272[1])) +
+labs(y="ヤマハx7272")+
+theme_gray(base_family = "HiraKakuPro-W3")
+p3 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= x4927/x4927[1])) +
+labs(y="ポーラx4927")+
+theme_gray(base_family = "HiraKakuPro-W3")
+p4 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= x4502/x4502[1])) +
+labs(y="武田薬品x4502")+
+theme_gray(base_family = "HiraKakuPro-W3")
+p1 + p2 + p3 + p4
+p1 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y = lag(log(x5202))) +
+labs(y="板硝子x5202") +
+theme_bw(base_family = "HiraKakuPro-W3")
+p1
+p1 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y = lag(log(x5202))) +
+labs(y="板硝子x5202")
+p2 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x7272))) +
+labs(y="ヤマハx7272")
+p3 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x4927))) +
+labs(y="ポーラx4927")
+p4 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x4502))) +
+labs(y="武田薬品x4502")
+p1 + p2 + p3 + p4
+p1 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y = lag(log(x5202)))
+p2 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x7272)))
+p3 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x4927)))
+p4 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x4502)))
+p1 + p2 + p3 + p4
+p1 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y = lag(log(x5202)))) +
+labs(y="板硝子x5202") +
+theme_bw(base_family = "HiraKakuPro-W3")
+p2 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x7272)))) +
+labs(y="ヤマハx7272")+
+theme_bw(base_family = "HiraKakuPro-W3")
+p3 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x4927)))) +
+labs(y="ポーラx4927")+
+theme_bw(base_family = "HiraKakuPro-W3")
+p4 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x4502)))) +
+labs(y="武田薬品x4502")+
+theme_bw(base_family = "HiraKakuPro-W3")
+p1 + p2 + p3 + p4
+p1
+p1 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y = lag(log(x5202)))) +
+labs(y="板硝子x5202") +
+theme_bw(base_family = "HiraKakuPro-W3")
+p2 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x7272)))) +
+labs(y="ヤマハx7272")+
+theme_bw(base_family = "HiraKakuPro-W3")
+p3 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x4927)))) +
+labs(y="ポーラx4927")+
+theme_bw(base_family = "HiraKakuPro-W3")
+p4 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(log(x4502)))) +
+labs(y="武田薬品x4502")+
+theme_bw(base_family = "HiraKakuPro-W3")
+p1
+price4 <- price4 %>%
+mutate(times = row_number()) %>%
+mutate(x5202lag = log(x5202lag))
+###ggplotを使う場合
+price4 <- price4 %>%
+mutate(times = row_number()) %>%
+mutate(x5202log = log(x5202))
+price4
+price4 <- price4 %>%
+mutate(times = row_number()) %>%
+mutate(x5202log = log(x5202)) %>%
+mutate(x7272log = log(x7272)) %>%
+mutate(x4927log = log(x4927)) %>%
+mutate(x4502log = log(x4502))
+p1 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y = lag(x5202))) +
+labs(y="板硝子x5202") +
+theme_bw(base_family = "HiraKakuPro-W3")
+p2 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(x7272))) +
+labs(y="ヤマハx7272")+
+theme_bw(base_family = "HiraKakuPro-W3")
+p3 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(x4927))) +
+labs(y="ポーラx4927")+
+theme_bw(base_family = "HiraKakuPro-W3")
+p4 <- ggplot(price4) +
+geom_line(mapping = aes(x = times, y= lag(x4502))) +
+labs(y="武田薬品x4502")+
+theme_bw(base_family = "HiraKakuPro-W3")
+p1
+price4 <- price4 %>%
+mutate(times = row_number())
+price4
+attach(price4)
+par(mfcol=c(2,2))
+plot(diff(log(x5202))*100,type="l")
+plot(diff(log(x7272))*100,type="l")
+plot(diff(log(x4927))*100,type="l")
+plot(diff(log(x4502))*100,type="l")
+detach(2)
+attach(price4)
+par(mfcol=c(2,2))
+plot(diff(log(x5202))*100,type="l",ylim = range(diff(log(price4$x5202))*100))
+plot(diff(log(x7272))*100,type="l"ylim = range(diff(log(price4$x5202))*100))
+plot(diff(log(x4927))*100,type="l"ylim = range(diff(log(price4$x5202))*100))
+plot(diff(log(x4502))*100,type="l"ylim = range(diff(log(price4$x5202))*100))
+detach(2)
+attach(price4)
+par(mfcol=c(2,2))
+plot(diff(log(x5202))*100,type="l",ylim = range(diff(log(price4$x5202))*100))
+plot(diff(log(x7272))*100,type="l",ylim = range(diff(log(price4$x5202))*100))
+plot(diff(log(x4927))*100,type="l",ylim = range(diff(log(price4$x5202))*100))
+plot(diff(log(x4502))*100,type="l",ylim = range(diff(log(price4$x5202))*100))
+detach(2)
+attach(price4)
+mean(x5202)
+mean(x7272)
+mean(x4927)
+mean(x4502)
+detach(2)
+attach(return4)
+mean(x5202)
+mean(x7272)
+mean(x4927)
+mean(x4502)
+detach(2)
+view(return4)
+attach(return4)  #returnは収益率のデータ
+sd(x5202)
+sd(x7272)
+sd(x4927)
+sd(x4502)
+detach(2)
+attach(return4)  #returnは収益率のデータ
+par(mfcol=c(2,2))
+hist(x5202,main="板硝子",break=-10:10*5/3)
+hist(x7272,main="ヤマハ",break=-10:10*5/3)
+hist(x4927,main="ポーラ",break=-10:10*5/3)
+hist(x4502,main="武田薬品",break=-10:10*5/3)
+detach(2)
+#４銘柄のヒストグラムを書いてみる
+attach(return4)  #returnは収益率のデータ
+par(mfcol=c(2,2))
+hist(x5202,main="板硝子",breaks = -10:10*5/3)
+hist(x7272,main="ヤマハ",breaks = -10:10*5/3)
+hist(x4927,main="ポーラ",breaks = -10:10*5/3)
+hist(x4502,main="武田薬品",breaks = -10:10*5/3)
+detach(2)
+attach(return4)  #returnは収益率のデータ
+plot(x=x5202,y=x4502)
+detach(2)
+attach(return4)  #returnは収益率のデータ
+plot(x=x5202,y=x4502)
+detach(2)
+attach(return4)  #returnは収益率のデータ
+par(mfcol=c(1,1))
+plot(x=x5202,y=x4502)
+detach(2)
+attach(return4)  #returnは収益率のデータ
+par(mfcol=c(1,1))
+plot(x=x7272,y=x4502)
+detach(2)
+#相関係数
+col(return4$x7272, return4$x4502)
+#相関係数
+cor(return4$x7272, return4$x4502)
+#１つ１つ実行するのは面倒。データフレーム化しておけば一発で相関行列が出せる
+plot(return4)
+#同じく相関係数も一気に出せる
+cor(return4)
+#Shapiro-Wilkの検定（正規性の検定）
+shapiro.test(return4$x4927)
+shapiro.test(return4$x5202)
+shapiro.test(return4$x7272)
+shapiro.test(return4$x4927)
+shapiro.test(return4$x4502)
+library(tseries)
+install.packages(tseries)
+install.packages("tseries")
+install.packages("tseries")
+library(tseries)
+install.packages("tseries")
+install.packages("tseries")
+library(tseries)
+library(tseries)
+runs.test(as.factor(return4$x7272 < mean(return4)))
+runs.test(tmp)
+tmp = as.factor(return4$x7272 < mean(return4))
+runs.test(tmp)
+tmp = as.factor(return4$x7272 < mean(return4x$7272))
+tmp = as.factor(return4$x7272 < mean(return4$x7272))
+runs.test(tmp)
+tmp1 = as.factor(return4$x7272 < mean(return4$x7272))
+tmp2 = as.factor(return4$x4502 < mean(return4$x4502))
+tmp3 = as.factor(return4$x4927 < mean(return4$x4927))
+tmp4 = as.factor(return4$x5202 < mean(return4$x5202))
+runs.test(tmp1)
+runs.test(tmp2)
+runs.test(tmp3)
+runs.test(tmp4)
+par(mfcol=c(2,2))
+plot(X.price,type"l")
+plot(X.return,type"l")
+plot(Y.price,type"l")
+plot(Y.return,type"l")
+par(mfcol=c(2,2))
+plot(X.price,type="l")
+plot(X.return,type="l")
+plot(Y.price,type="l")
+plot(Y.return,type="l")
+par(mfcol=c(2,2))
+plot(X.price,type="l")
+plot(X.return,type="l")
+plot(Y.price,type="l",ylim = X.price)
+plot(Y.return,type="l")
+par(mfcol=c(2,2))
+plot(X.price,type="l")
+plot(X.return,type="l")
+plot(Y.price,type="l",ylim = range(X.price))
+plot(Y.return,type="l")
+par(mfcol=c(2,1))
+plot(X.price,type="l")
+plot(X.return,type="l")
+abline(h=0,lty=2)
+par(mfcol=c(2,1))
+plot(X.price,type="l")
+plot(X.return,type="l")
+abline(h=0,lty=3)
+par(mfcol=c(2,1))
+plot(Y.price,type="l")
+plot(Y.return,type="l")
+abline(h=0,lty=3)
+par(mfcol=c(2,1))
+plot(Y.price,type="l")
+plot(Y.return,type="l",ylim = range(X.price))
+abline(h=0,lty=3)
+par(mfcol=c(2,1))
+plot(Y.price,type="l",ylim = range(X.price))
+plot(Y.return,type="l")
+abline(h=0,lty=3)
+#株価に
+par(mfcol=c(1,2))
+hist(X.price)
+hist(Y.price)
+par(mfcol=c(2,2))
+hist(X.price)
+hist(Y.price)
+hist(X.price)
+hist(Y.price)
+par(mfcol=c(2,2))
+hist(X.price)
+hist(Y.price)
+hist(X.return)
+hist(Y.return)
+par(mfcol=c(1,2))
+plot(x=X.return[1:99],y=X.return[2:100])
+plot(x=Y.return[1:99],y=Y.return[2:100])
+cor(X.return[1:99],X.return[2:100])
+cor(Y.return[1:99],Y.return[2:100])
+par(mfcol=c(1,2))
+plot(x=X.return[1:99],y=X.return[2:100])
+plot(x=Y.return[1:99],y=Y.return[2:100])
+#各ragでの自己相関係数を算出する
+acf(X.return,plot=f)
+#各ragでの自己相関係数を算出する
+acf(X.return,plot=f)
+acf(X.return,plot=F)
+#ただし、corとは平均の算出方法が違うため、数値は一致しない
+#横軸にrag数を、縦軸に自己相関係数の値をプロットしたものをコレログラムと呼ぶ
+acf(X.return)
+#ただし、額面通りに６日前の固有の収益率が当日の収益率に関係しているとは判断できない
+#自己相関係数の計算ではrag１の積み重ねによる間接的な関係が含まれているから
+#例:rag1の自己相関係数には
+#１、今日の値には昨日の値が関係する
+#２、昨日の値には一昨日の値が関係する
+#いずれも成り立つ、これを組み合わせると
+#３、今日の値には、昨日を通じた一昨日の値が関係する
+#これを推移律と呼ぶ。一方で
+#４、一昨日の値が直接今日の値と関係する
+#昨日の影響を排除した一昨日の関係を調べるためには偏自己相関係数を求める
+acf(X.return, plot=F, type="partial")
+#偏自己相関係数をこコレログラムにする
+acf(X.return, plot=T, type="P")
+#偏自己相関係数をこコレログラムにする
+acf(X.return, plot=T, type="P")
+#偏自己相関係数をこコレログラムにする
+acf(X.return, plot=T, type="p")
+#自己相関係数を有しているかは統計的仮説検定で計量的に算出することも可能
+#Ljung-Box検定　→　帰無仮説：自己相関関係を有していない
+Box.test(X.return, type = "L")
+Box.test(Y.return, type = "L")
+ar(X.return, aic=F,order.max = 1)
+ar(X.return, aic=F,order.max = 1)
+(1-0.631)*mean(X.return)
+ar(Y.return, aic=T, order/max1)
+ar(Y.return, aic=T, order.max1)
+ar(Y.return, aic=T, order.max=1)
+mean(X.return)
+acf(X.return, plot=F, type="covariance")
+#単位根を有するかの検定「Dickey-Fuller検定」　：　帰無仮説は「データ系列に単位根が存在する」
+adf.test(price4$x7272)
+#Dickey-Fuller = -2.9204, Lag order = 4, p-value = 0.1943
+#alternative hypothesis: stationary
+#p値=19.43%なので帰無仮説を棄却できず「単位根が存在する」になる
+adf.test(return$x7272)
+#Dickey-Fuller = -2.9204, Lag order = 4, p-value = 0.1943
+#alternative hypothesis: stationary
+#p値=19.43%なので帰無仮説を棄却できず「単位根が存在する」になる
+adf.test(return4$x7272)
+par(mfcol=c(2,1))
+plot(data.log.return$x9041, type='l', ylab="Return")
+plot(data.log.return$x9042, type='l', ylab="Return")
+ar.fit1 = ar(data.log.return&x9041)
+ar.fit2 = ar(data.log.return&x9042)
+ar.fit1
+ar.fit2
+ar.fit1 = ar(data.log.return&x9041)
+ar.fit2 = ar(data.log.return&x9042)
+ar.fit1 = ar(data.log.return$x9041)
+ar.fit2 = ar(data.log.return$x9042)
+ar.fit1
+ar.fit2
+acf(data.log.return$x9041)  #aicを明示的に与えなければ、AICを使って最適な次数の自己回帰モデルを自動的に選び出してくれる
+acf(data.log.return$x9042)
+ar.fit1
+view(ar.fit1)
+View(ar.fiView()
+View(ar.fit1)
+View(ar.fit1)
+acf(ar.fit1$resid[-1])   #resid[-1]は、欠損となっているresidの１番目の要素を取り除く、という意味
+acf(ar.fit2$resid[-1])
+ar(ar.fit1$resid[-1])$order
+ar(ar.fit2$resid[-1])$order
+ar(ar.fit2$resid[-1])
+ar(ar.fit2$resid[-1])$sigma^2
+ar(ar.fit2$resid[-1])$sigma^2 estimated
+Box.test(ar.fit1$resid[-1], type = "L")
+Box.test(ar.fit2$resid[-1], type = "L")
+acf(ar.fit1$resid[-1]^2)   #resid[-1]は、欠損となっているresidの１番目の要素を取り除く、という意味
+acf(ar.fit2$resid[-1]^2)
+ar(ar.fit1$resid[-1]^2)$order  #０
+ar(ar.fit2$resid[-1]^2)$order  #０
+ar(ar.fit1$resid[-1]^2)$  #７
+ar(ar.fit2$resid[-1]^2)$  #０
+ar(ar.fit1$resid[-1]^2)$  #７
+ar(ar.fit2$resid[-1]^2)$  #０
+ar(ar.fit1$resid[-1]^2)   #７
+ar(ar.fit2$resid[-1]^2)   #０
+ar(ar.fit2$resid[-1]^2)
+ar(ar.fit1$resid[-1]^2)
+ar(ar.fit2$resid[-1]^2)
+Box.test(ar.fit1$resid[-1]^2, type = "L")   #X-squared = 0.00058464, df = 1, p-value = 0.9807
+Box.test(ar.fit2$resid[-1]^2, type = "L")
+library(fGarch)
+install.packages("fGarch")
+library(fGarch)
+#①AR(1)＋ARCH(1)モデルの当てはめ
+arch.fit1=garchFit(~arma(1,0)+garch(1,0),data=data.log.return$x9041, trace=F)
+arch.fit1
+#ボラティリティを図示
+plot(Data[-1], arch.fit1@sigma.t^2, type="l", xlab="Data", ylab="Volatility")
+#ボラティリティを図示
+plot(Date[-1], arch.fit1@sigma.t^2, type="l", xlab="Date", ylab="Volatility")
+abline(0,1)
+qqnorm(arch.fit1@residuals/arch.fit1@sigma.t)
+abline(0,1)
+#正規性検定も行ってみる
+shapiro.test(arch.fit1@residuals/arch.fit1@sigma.t)
+arch.fit2=garchFit(~arma(1,0)+garch(1,1),
+data=data.log.return$x9041,
+trace=F)
+arch.fit2
+rch.fit2=garchFit(~arma(1,0)+garch(1,1),
+data=data.log.return$x9041,
+trace=F)
+library(fGarch)
+arch.fit2=garchFit(~arma(1,0)+garch(1,1),
+data=data.log.return$x9041,
+trace=F)
+arch.fit2
+qqnorm(arch.fit2@residuals/arch.fit2@sigma.t)
+abline(0,1)
+shapiro.test(arch.fit2@residuals/arch.fit2@sigma.t)
+source('~/Documents/R関連/timeseries/timeseries_first.R')

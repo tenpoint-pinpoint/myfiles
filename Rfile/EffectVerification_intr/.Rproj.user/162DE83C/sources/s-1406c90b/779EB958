@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1612188157847.000,
+    "dirty" : false,
+    "encoding" : "SHIFT-JIS",
+    "folds" : "",
+    "hash" : "3031094673",
+    "id" : "779EB958",
+    "lastKnownWriteTime" : 1611668666,
+    "last_content_update" : 1611668666,
+    "path" : "~/EffectVerification_intr/chapter.4.R",
+    "project_path" : "chapter.4.R",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

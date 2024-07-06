@@ -1,0 +1,28 @@
+---
+title: '第４回グラフ'
+author: "山城翔太"
+date: "2020/04/01"
+output: html_document
+---
+
+```{r}
+g1 <- read.csv("ch054.csv",h=T,row.names=1)
+plot(g1[,1],g1[,2],pch=1,lty=1,xlab="月",ylab="気温",type="o")
+points(g1[,1],g1[,3],pch=2)
+lines(g1[,1],g1[,3],lty=2)
+#legend("topleft",pch=c(1,2),lty=c(1,2),legend=c("A","B"))
+legend(1,27,pch=c(1,2),lty=c(1,2),legend=c("A","B"))
+```
+
+A、Bは月ごとの平均気温を表していて、A は夏に向けて平均気温が上がり、冬に向けて
+下がっている。また、Bは夏に気温が下がり、冬に気温が上がっているように見ることができる。
+## 関数のグラフ
+
+```{r}
+curve(cos(x),xlim=c(-1.5*pi,1.5*pi))
+curve(sin(x),add=T,lty=2)
+legend("topleft",lty=c(1,2),legend =c("y=cos(x)","y=sin(x)")  )
+#legend("topright",lty=c(1,2),legend =c("y=cos(x)","y=sin(x)")  )
+```
+
+y=cos(x)とy=sin(x) は同じ形をしていて、横に平行移動した形になっている。

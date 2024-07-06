@@ -1,0 +1,17 @@
+digraph G {
+	overlap=scale splines=true
+	edge [fontsize=12]
+	node [fillcolor="#cae6df" shape=circle style=filled]
+	loyal [label=loyal]
+	continue [label=continue]
+	node [shape=box style=""]
+	favorite [label=favorite]
+	purchase [label=purchase]
+	satisfaction [label=satisfaction]
+	visit [label=visit]
+	continue -> loyal [label="1.326\np-val: 0.00"]
+	loyal -> satisfaction [label=1.000]
+	loyal -> purchase [label="0.709\np-val: 0.00"]
+	continue -> visit [label=1.000]
+	continue -> favorite [label="1.461\np-val: 0.00"]
+}

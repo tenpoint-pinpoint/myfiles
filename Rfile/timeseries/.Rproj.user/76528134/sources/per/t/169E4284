@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1588483086740.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4251547928",
+    "id" : "169E4284",
+    "lastKnownWriteTime" : 1589196690,
+    "last_content_update" : 1589196690184,
+    "path" : "~/Documents/R関連/timeseries/timeseries_first.R",
+    "project_path" : "timeseries_first.R",
+    "properties" : {
+        "cursorPosition" : "684,0",
+        "docOutlineVisible" : "0",
+        "scrollLine" : "644",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}
